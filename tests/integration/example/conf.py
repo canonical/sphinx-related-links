@@ -1,4 +1,4 @@
-# This file is part of sphinx-ext-template.
+# This file is part of related-links.
 #
 # Copyright 2025 Canonical Ltd.
 #
@@ -25,7 +25,11 @@ author = "Tester"
 
 html_title = project
 html_theme = "furo"
+html_context = {"discourse_prefix": "https://discourse.ubuntu.com/t/"}
+
+templates_path = ["_templates"]
 
 extensions = [
-    "hello_ext",
+    "myst_parser",
+    "related_links",
 ]

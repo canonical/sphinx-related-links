@@ -1,55 +1,78 @@
-# hello-ext
+# related-links
 
-<!-- Answer elevator-pitch questions about the extension – What is it? What does it do? What
-essential problem does it solve? -->
-
-hello-ext adds a Sphinx directive that generates a custom greeting.
+related-links adds functionality to Sphinx that allows adding related links on a
+per-page basis, supporting both Discourse topic links and custom related URLs.
 
 ## Basic usage
 
-<!-- Provide a few examples of the extension's most common use cases. Remember the Pareto
-principle! -->
+### Adding Discourse links
 
-To generate a greeting, add the `hello` directive to your document:
+Configure the Discourse prefix in your `conf.py`:
+
+```python
+html_context = {
+    "discourse_prefix": "https://discuss.linuxcontainers.org/t/"
+}
+```
+
+Add the desired Discourse topic IDs to the page's metadata. For MyST files, this is done
+with [frontmatter](https://mystmd.org/guide/frontmatter).
 
 ```
-.. hello:: world!
+---
+discourse: 12033,13128
+---
+```
+
+For rST sources, metadata content can be added with the following syntax:
+
+```
+:discourse: 12033, 13128
+```
+
+### Adding custom related links
+
+Add URLs to page metadata:
+
+```
+---
+relatedlinks: https://www.example.com, https://www.google.com
+---
 ```
 
 ## Project setup
 
-<!-- Provide the simplest way to install the extension. In most cases, this will
-be via `pip`. -->
-
-hello-ext is published on PyPI and can be installed with:
+related-links is published on PyPI and can be installed with:
 
 ```bash
-pip install hello-ext
+pip install related-links
 ```
 
-After adding hello-ext to your Python project, update your Sphinx's conf.py file to
-include hello-ext as one of its extensions:
+After adding related-links to your Python project, update your Sphinx's conf.py file to
+include related-links as one of its extensions:
 
 ```python
 extensions = [
-    "hello_ext"
+    "related_links"
 ]
 ```
 
+Lastly, update your [Sphinx project's
+templates](https://www.sphinx-doc.org/en/master/development/html_themes/templating.html)
+to include the metadata content in the right-hand sidebar. This will depend on your
+project's theme. An example template can be seen in this project's [integration
+tests](/tests/integration/example/_templates/page.html).
+
 ## Community and support
 
-<!-- This is boilerplate. Replace the extension name and GitHub link. -->
-
 You can report any issues or bugs on the project's [GitHub
-repository](https://github.com/canonical/sphinx-ext-template).
+repository](https://github.com/canonical/related-links).
 
-hello-ext is covered by the [Ubuntu Code of
+related-links is covered by the [Ubuntu Code of
 Conduct](https://ubuntu.com/community/ethos/code-of-conduct).
 
 ## License and copyright
 
-<!-- Replace the extension name and, if necessary, the extension's license. -->
-
-hello-ext is released under the [GPL-3.0 license](LICENSE).
+related-links is released under the [GPL-3.0 license](LICENSE).
 
 © 2025 Canonical Ltd.

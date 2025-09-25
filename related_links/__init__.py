@@ -1,24 +1,26 @@
-# This file is part of sphinx-ext-template.
+# This file is part of related-links.
 #
 # Copyright 2025 Canonical Ltd.
 #
 # This program is free software: you can redistribute it and/or modify it under the
-# terms of the GNU General Public License version 3, as published by the Free
+# terms of the GNU Lesser General Public License version 3, as published by the Free
 # Software Foundation.
 #
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranties of MERCHANTABILITY, SATISFACTORY
-# QUALITY, or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
+# QUALITY, or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
 # License for more details.
 #
-# You should have received a copy of the GNU General Public License along with
+# You should have received a copy of the GNU Lesser General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""Adds the directive to Sphinx."""
+"""Contains the core elements of the related-links extension."""
 
-from sphinx.util.typing import ExtensionMetadata
+from related_links import common
+from related_links.callback import add_context_links
 from sphinx.application import Sphinx
-from .hello import HelloDirective
+from sphinx.util.typing import ExtensionMetadata
+
 
 try:
     from ._version import __version__
@@ -26,17 +28,15 @@ except ImportError:  # pragma: no cover
     from importlib.metadata import version, PackageNotFoundError
 
     try:
-        __version__ = version("hello_ext")
+        __version__ = version("pydantic_kitbash")
     except PackageNotFoundError:
         __version__ = "dev"
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
-    """Add the extension's directive to Sphinx.
-
-    :returns: ExtensionMetadata
-    """
-    app.add_directive("hello", HelloDirective)
+    """Connect the callback function and add custom CSS."""
+    app.connect("html-page-context", add_context_links)  # type: ignore[reportUnknownMemberType]
+    common.add_css(app, "related-links.css")
 
     return {
         "version": __version__,
