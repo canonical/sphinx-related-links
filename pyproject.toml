@@ -1,5 +1,5 @@
 [project]
-name = "related-links"
+name = "sphinx-related-links"
 description = "A Sphinx extension for adding related links to documentation pages."
 dynamic = ["version", "readme"]
 requires-python = ">=3.10"

@@ -698,7 +698,7 @@ wheels = [
 ]
 
 [[package]]
-name = "related-links"
+name = "sphinx-related-links"
 source = { editable = "." }
 dependencies = [
     { name = "beautifulsoup4" },

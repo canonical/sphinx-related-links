@@ -27,11 +27,11 @@ This project is licensed under [GPL-3.0](LICENSE).
 ## Report an issue or open a request
 
 If you find a bug or feature gap in the project, look for it in the [project's GitHub
-issues](https://github.com/canonical/related-links/issues) first. If you have
+issues](https://github.com/canonical/sphinx-related-links/issues) first. If you have
 fresh input, add your voice to the issue.
 
 If the bug or feature doesn't have an issue, we invite you to [open
-one](https://github.com/canonical/related-links/issues/new/choose).
+one](https://github.com/canonical/sphinx-related-links/issues/new/choose).
 
 ## Set up for development
 
@@ -40,13 +40,13 @@ systems and is heavily terminal-dependent. Remote testing and building is provid
 GitHub for continuous integration and delivery.
 
 Start by [creating a personal
-fork](https://github.com/canonical/related-links/fork) of the repository on
+fork](https://github.com/canonical/sphinx-related-links/fork) of the repository on
 GitHub.
 
 Next, on your host system, clone your fork:
 
 ```bash
-git clone git@github.com:<username>/related-links.git --recurse-submodules
+git clone git@github.com:<username>/sphinx-related-links.git --recurse-submodules
 ```
 
 Inside the project directory, set up the virtual development environment and install all
@@ -194,7 +194,7 @@ Once your work is committed to your branch, push it to your fork:
 git push -u origin <branch-name>
 ```
 
-Finally, [open a PR](https://github.com/canonical/related-links/compare) for it on
+Finally, [open a PR](https://github.com/canonical/sphinx-related-links/compare) for it on
 GitHub. If your branch has one commit, GitHub will title the PR after it. If your branch
 has more than one commit, name the PR after the most significant. Once open, reviewers
 are assigned automatically to your work.

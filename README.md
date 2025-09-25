@@ -1,6 +1,6 @@
-# related-links
+# sphinx-related-links
 
-related-links adds functionality to Sphinx that allows adding related links on a
+sphinx-related-links adds functionality to Sphinx that allows adding related links on a
 per-page basis, supporting both Discourse topic links and custom related URLs.
 
 ## Basic usage
@@ -42,14 +42,14 @@ relatedlinks: https://www.example.com, https://www.google.com
 
 ## Project setup
 
-related-links is published on PyPI and can be installed with:
+sphinx-related-links is published on PyPI and can be installed with:
 
 ```bash
-pip install related-links
+pip install sphinx-related-links
 ```
 
-After adding related-links to your Python project, update your Sphinx's conf.py file to
-include related-links as one of its extensions:
+After adding sphinx-related-links to your Python project, update your Sphinx's conf.py file to
+include sphinx-related-links as one of its extensions:
 
 ```python
 extensions = [
@@ -66,13 +66,13 @@ tests](/tests/integration/example/_templates/page.html).
 ## Community and support
 
 You can report any issues or bugs on the project's [GitHub
-repository](https://github.com/canonical/related-links).
+repository](https://github.com/canonical/sphinx-related-links).
 
-related-links is covered by the [Ubuntu Code of
+sphinx-related-links is covered by the [Ubuntu Code of
 Conduct](https://ubuntu.com/community/ethos/code-of-conduct).
 
 ## License and copyright
 
-related-links is released under the [GPL-3.0 license](LICENSE).
+sphinx-related-links is released under the [GPL-3.0 license](LICENSE).
 
 © 2025 Canonical Ltd.
