@@ -1,11 +1,13 @@
 [project]
-name = "hello-ext"
-description = "An example extension."
+name = "related-links"
+description = "A Sphinx extension for adding related links to documentation pages."
 dynamic = ["version", "readme"]
 requires-python = ">=3.10"
 dependencies = [
     "docutils>=0.21.2",
     "sphinx~=7.0",
+    "requests",
+    "beautifulsoup4",
 ]
 license = "GPL-3.0"
 
@@ -15,12 +17,14 @@ lint = [
 ]
 types = [
     "types-docutils",
+    "types-requests",
     "types-setuptools",
 ]
 dev = [
     "bs4>=0.0.2",
     "furo>=2025.7.19",
     "lxml>=5.0",
+    "myst-parser>=4.0.1",
     "pytest>=8.4.0",
     "pytest-cov~=6.0",
     "pytest-mock~=3.12",
@@ -34,7 +38,7 @@ build-backend = "setuptools.build_meta"
 readme = { file = "README.md", content-type = "text/markdown" }
 
 [tool.setuptools_scm]
-write_to = "hello_ext/_version.py"
+write_to = "related_links/_version.py"
 # the version comes from the latest annotated git tag formatted as 'X.Y.Z'
 # version scheme:
 #   - X.Y.Z.post<commits since tag>+g<hash>.d<%Y%m%d>
@@ -60,7 +64,7 @@ git_describe_command = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["hello_ext"]
+include = ["related_links"]
 namespaces = false
 
 [tool.codespell]
@@ -93,7 +97,7 @@ skip_empty = true
 exclude_also = ["if (typing\\.)?TYPE_CHECKING:"]
 
 [tool.pyright]
-strict = ["hello_ext"]
+strict = ["related_links"]
 pythonVersion = "3.10"
 pythonPlatform = "Linux"
 exclude = [
@@ -116,7 +120,7 @@ disallow_untyped_decorators = true
 disallow_any_generics = true
 
 [[tool.mypy.overrides]]
-module = ["hello_ext.*"]
+module = ["related_links.*"]
 disallow_untyped_defs = true
 no_implicit_optional = true
 
@@ -127,8 +131,7 @@ strict = false
 [tool.ruff]
 line-length = 88
 target-version = "py310"
-src = ["hello_ext", "tests"]
-extend-exclude = ["*/_version.py"]
+src = ["related_links", "tests"]
 
 [tool.ruff.format]
 docstring-code-format = true
