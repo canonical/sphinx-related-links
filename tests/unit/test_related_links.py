@@ -22,8 +22,8 @@
 from unittest.mock import MagicMock, Mock, patch
 
 import pytest
-from sphinx_related_links import setup
 from sphinx.application import Sphinx
+from sphinx_related_links import setup
 
 
 class TestRelatedLinksSetup:
