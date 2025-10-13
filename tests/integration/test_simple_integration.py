@@ -111,6 +111,7 @@ def example_project(request) -> Path:
     return target_dir
 
 
+@pytest.mark.slow
 def test_sphinx_build(example_project):
     build_dir = example_project / "_build"
     subprocess.check_call(
