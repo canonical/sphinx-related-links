@@ -31,5 +31,5 @@ templates_path = ["_templates"]
 
 extensions = [
     "myst_parser",
-    "related_links",
+    "sphinx_related_links",
 ]

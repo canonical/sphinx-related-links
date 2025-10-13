@@ -1,4 +1,4 @@
-PROJECT=related_links
+PROJECT=sphinx_related_links
 UV_TEST_GROUPS := "--group=dev"
 UV_LINT_GROUPS := "--group=lint" "--group=types"
 

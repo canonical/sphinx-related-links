@@ -38,7 +38,7 @@ build-backend = "setuptools.build_meta"
 readme = { file = "README.md", content-type = "text/markdown" }
 
 [tool.setuptools_scm]
-write_to = "related_links/_version.py"
+write_to = "sphinx_related_links/_version.py"
 # the version comes from the latest annotated git tag formatted as 'X.Y.Z'
 # version scheme:
 #   - X.Y.Z.post<commits since tag>+g<hash>.d<%Y%m%d>
@@ -64,7 +64,7 @@ git_describe_command = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["related_links"]
+include = ["sphinx_related_links"]
 namespaces = false
 
 [tool.codespell]
@@ -97,7 +97,7 @@ skip_empty = true
 exclude_also = ["if (typing\\.)?TYPE_CHECKING:"]
 
 [tool.pyright]
-strict = ["related_links"]
+strict = ["sphinx_related_links"]
 pythonVersion = "3.10"
 pythonPlatform = "Linux"
 exclude = [
@@ -120,7 +120,7 @@ disallow_untyped_decorators = true
 disallow_any_generics = true
 
 [[tool.mypy.overrides]]
-module = ["related_links.*"]
+module = ["sphinx_related_links.*"]
 disallow_untyped_defs = true
 no_implicit_optional = true
 
@@ -131,7 +131,7 @@ strict = false
 [tool.ruff]
 line-length = 88
 target-version = "py310"
-src = ["related_links", "tests"]
+src = ["sphinx_related_links", "tests"]
 
 [tool.ruff.format]
 docstring-code-format = true
