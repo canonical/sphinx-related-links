@@ -16,8 +16,8 @@
 
 """Contains the core elements of the related-links extension."""
 
-from related_links import common
-from related_links.callback import add_context_links
+from sphinx_related_links import common
+from sphinx_related_links.callback import add_context_links
 from sphinx.application import Sphinx
 from sphinx.util.typing import ExtensionMetadata
 
@@ -28,7 +28,7 @@ except ImportError:  # pragma: no cover
     from importlib.metadata import version, PackageNotFoundError
 
     try:
-        __version__ = version("pydantic_kitbash")
+        __version__ = version("sphinx-related-links")
     except PackageNotFoundError:
         __version__ = "dev"
 

@@ -53,7 +53,7 @@ include sphinx-related-links as one of its extensions:
 
 ```python
 extensions = [
-    "related_links"
+    "sphinx_related_links"
 ]
 ```
 

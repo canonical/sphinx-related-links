@@ -29,31 +29,31 @@ from pathlib import Path
 import bs4
 
 # Add the extension to the path
-sys.path.insert(0, str(Path(__file__).parents[2] / "related_links"))
+sys.path.insert(0, str(Path(__file__).parents[2] / "sphinx_related_links"))
 
 
 def test_extension_can_be_imported():
     """Test that the extension can be imported without errors."""
     try:
-        import related_links
+        import sphinx_related_links
 
-        assert hasattr(related_links, "setup")
-        assert callable(related_links.setup)
+        assert hasattr(sphinx_related_links, "setup")
+        assert callable(sphinx_related_links.setup)
     except ImportError as e:
-        pytest.fail(f"Failed to import related_links: {e}")
+        pytest.fail(f"Failed to import sphinx_related_links: {e}")
 
 
 def test_extension_setup_function():
     """Test that the setup function returns correct metadata."""
     from unittest.mock import Mock
 
-    import related_links
+    import sphinx_related_links
 
     app_mock = Mock()
     app_mock.connect = Mock()
 
-    with patch("related_links.common.add_css") as mock_add_css:
-        result = related_links.setup(app_mock)
+    with patch("sphinx_related_links.common.add_css") as mock_add_css:
+        result = sphinx_related_links.setup(app_mock)
 
     assert "version" in result
     assert "parallel_read_safe" in result
@@ -66,7 +66,7 @@ def test_context_functions_work():
     """Test that context functions can be called."""
     from unittest.mock import Mock
 
-    import related_links
+    import sphinx_related_links
 
     app_mock = Mock()
     pagename = "test"
@@ -77,7 +77,7 @@ def test_context_functions_work():
     doctree = Mock()
 
     # Call the setup function
-    related_links.add_context_links(app_mock, pagename, templatename, context, doctree)
+    sphinx_related_links.add_context_links(app_mock, pagename, templatename, context, doctree)
 
     # Check that context functions were added
     assert "discourse_links" in context

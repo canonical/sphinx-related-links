@@ -22,7 +22,7 @@
 from unittest.mock import MagicMock, Mock, patch
 
 import pytest
-from related_links import setup
+from sphinx_related_links import setup
 from sphinx.application import Sphinx
 
 
@@ -34,7 +34,7 @@ class TestRelatedLinksSetup:
         app_mock = Mock(spec=Sphinx)
         app_mock.connect = Mock()
 
-        with patch("related_links.common.add_css") as mock_add_css:
+        with patch("sphinx_related_links.common.add_css") as mock_add_css:
             result = setup(app_mock)
 
         assert result.get("parallel_read_safe", "") is True
@@ -42,7 +42,7 @@ class TestRelatedLinksSetup:
 
         # Verify the extension connects to the right event
         app_mock.connect.assert_called_once_with(
-            "html-page-context", related_links.add_context_links
+            "html-page-context", sphinx_related_links.add_context_links
         )
 
         # Verify CSS is added
@@ -65,7 +65,7 @@ class TestContextFunctions:
         self.context["discourse_prefix"] = None
 
         # Call setup_func to add functions to context
-        related_links.add_context_links(
+        sphinx_related_links.add_context_links(
             self.app_mock, self.pagename, self.templatename, self.context, self.doctree
         )
 
@@ -76,14 +76,14 @@ class TestContextFunctions:
         """Test discourse_links with empty ID list."""
         self.context["discourse_prefix"] = "https://discuss.example.com/t/"
 
-        related_links.add_context_links(
+        sphinx_related_links.add_context_links(
             self.app_mock, self.pagename, self.templatename, self.context, self.doctree
         )
 
         result = self.context["discourse_links"]("")
         assert result == ""
 
-    @patch("related_links.callback.requests.get")
+    @patch("sphinx_related_links.callback.requests.get")
     def test_discourse_links_with_single_prefix(self, mock_get):
         """Test discourse_links with single prefix configuration."""
         # Mock successful HTTP response
@@ -94,7 +94,7 @@ class TestContextFunctions:
 
         self.context["discourse_prefix"] = "https://discuss.example.com/t/"
 
-        related_links.add_context_links(
+        sphinx_related_links.add_context_links(
             self.app_mock, self.pagename, self.templatename, self.context, self.doctree
         )
 
@@ -111,15 +111,15 @@ class TestContextFunctions:
 
     def test_related_links_empty_list(self):
         """Test related_links with empty link list."""
-        related_links.add_context_links(
+        sphinx_related_links.add_context_links(
             self.app_mock, self.pagename, self.templatename, self.context, self.doctree
         )
 
         result = self.context["related_links"]("")
         assert result == ""
 
-    @patch("related_links.callback.requests.get")
-    @patch("related_links.callback.BeautifulSoup")
+    @patch("sphinx_related_links.callback.requests.get")
+    @patch("sphinx_related_links.callback.BeautifulSoup")
     def test_related_links_with_urls(self, mock_bs, mock_get):
         """Test related_links with actual URLs."""
         # Mock successful HTTP response
@@ -133,7 +133,7 @@ class TestContextFunctions:
         mock_soup.title.get_text.return_value = "Example Page"
         mock_bs.return_value = mock_soup
 
-        related_links.add_context_links(
+        sphinx_related_links.add_context_links(
             self.app_mock, self.pagename, self.templatename, self.context, self.doctree
         )
 
@@ -148,4 +148,4 @@ class TestContextFunctions:
 
 
 # Import the module after defining the tests
-import related_links
+import sphinx_related_links
