@@ -77,7 +77,9 @@ def test_context_functions_work():
     doctree = Mock()
 
     # Call the setup function
-    sphinx_related_links.add_context_links(app_mock, pagename, templatename, context, doctree)
+    sphinx_related_links.add_context_links(
+        app_mock, pagename, templatename, context, doctree
+    )
 
     # Check that context functions were added
     assert "discourse_links" in context
