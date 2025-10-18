@@ -5,7 +5,7 @@ dynamic = ["version", "readme"]
 requires-python = ">=3.10"
 dependencies = [
     "docutils>=0.21.2",
-    "sphinx~=7.0",
+    "sphinx~=8.2",
     "requests",
     "beautifulsoup4",
 ]
