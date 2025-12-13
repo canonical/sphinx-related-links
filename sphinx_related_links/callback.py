@@ -105,7 +105,9 @@ def add_context_links(
                 if isinstance(context["discourse_prefix"], dict):
                     id_list = post.split(":")
                     if len(id_list) == 1:
-                        url = cast(list[str], context["discourse_prefix"].values())[0]
+                        url = list(
+                            cast(dict[str, str], context["discourse_prefix"]).values()
+                        )[0]
                     elif id_list[0] in context["discourse_prefix"]:
                         url = cast(dict[str, str], context["discourse_prefix"])[  # type: ignore[redundant-cast]
                             id_list[0]
