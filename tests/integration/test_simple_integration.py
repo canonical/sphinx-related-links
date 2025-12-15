@@ -138,6 +138,10 @@ def test_sphinx_build(example_project):
 
     related_link = soup.find("a", {"href": "https://ubuntu.com/"})
     if related_link:
-        assert related_link.get_text() == "Enterprise Open Source and Linux | Ubuntu"
+        # Normalize whitespace as the actual HTML may contain formatting whitespace
+        import re
+
+        actual_text = re.sub(r"\s+", " ", related_link.get_text().strip())
+        assert actual_text == "Enterprise Open Source and Linux | Ubuntu"
     else:
         pytest.fail("Related link not found in HTML output.")
