@@ -698,60 +698,6 @@ wheels = [
 ]
 
 [[package]]
-name = "sphinx-related-links"
-source = { editable = "." }
-dependencies = [
-    { name = "beautifulsoup4" },
-    { name = "docutils" },
-    { name = "requests" },
-    { name = "sphinx" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "bs4" },
-    { name = "furo" },
-    { name = "lxml" },
-    { name = "myst-parser" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "pytest-mock" },
-]
-lint = [
-    { name = "mypy" },
-]
-types = [
-    { name = "types-docutils" },
-    { name = "types-requests" },
-    { name = "types-setuptools" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "beautifulsoup4" },
-    { name = "docutils", specifier = ">=0.21.2" },
-    { name = "requests" },
-    { name = "sphinx", specifier = "~=7.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "bs4", specifier = ">=0.0.2" },
-    { name = "furo", specifier = ">=2025.7.19" },
-    { name = "lxml", specifier = ">=5.0" },
-    { name = "myst-parser", specifier = ">=4.0.1" },
-    { name = "pytest", specifier = ">=8.4.0" },
-    { name = "pytest-cov", specifier = "~=6.0" },
-    { name = "pytest-mock", specifier = "~=3.12" },
-]
-lint = [{ name = "mypy", specifier = ">=1.16.0" }]
-types = [
-    { name = "types-docutils" },
-    { name = "types-requests" },
-    { name = "types-setuptools" },
-]
-
-[[package]]
 name = "requests"
 version = "2.32.5"
 source = { registry = "https://pypi.org/simple" }
@@ -822,6 +768,60 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/98/0b/a866924ded68efec7a1759587a4e478aec7559d8165fac8b2ad1c0e774d6/sphinx_basic_ng-1.0.0b2.tar.gz", hash = "sha256:9ec55a47c90c8c002b5960c57492ec3021f5193cb26cebc2dc4ea226848651c9", size = 20736, upload-time = "2023-07-08T18:40:54.166Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3c/dd/018ce05c532a22007ac58d4f45232514cd9d6dd0ee1dc374e309db830983/sphinx_basic_ng-1.0.0b2-py3-none-any.whl", hash = "sha256:eb09aedbabfb650607e9b4b68c9d240b90b1e1be221d6ad71d61c52e29f7932b", size = 22496, upload-time = "2023-07-08T18:40:52.659Z" },
+]
+
+[[package]]
+name = "sphinx-related-links"
+source = { editable = "." }
+dependencies = [
+    { name = "beautifulsoup4" },
+    { name = "docutils" },
+    { name = "requests" },
+    { name = "sphinx" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "bs4" },
+    { name = "furo" },
+    { name = "lxml" },
+    { name = "myst-parser" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "pytest-mock" },
+]
+lint = [
+    { name = "mypy" },
+]
+types = [
+    { name = "types-docutils" },
+    { name = "types-requests" },
+    { name = "types-setuptools" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "beautifulsoup4" },
+    { name = "docutils", specifier = ">=0.21.2" },
+    { name = "requests" },
+    { name = "sphinx", specifier = "~=7.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "bs4", specifier = ">=0.0.2" },
+    { name = "furo", specifier = ">=2025.7.19" },
+    { name = "lxml", specifier = ">=5.0" },
+    { name = "myst-parser", specifier = ">=4.0.1" },
+    { name = "pytest", specifier = ">=8.4.0" },
+    { name = "pytest-cov", specifier = "~=6.0" },
+    { name = "pytest-mock", specifier = "~=3.12" },
+]
+lint = [{ name = "mypy", specifier = ">=1.16.0" }]
+types = [
+    { name = "types-docutils" },
+    { name = "types-requests" },
+    { name = "types-setuptools" },
 ]
 
 [[package]]
@@ -958,9 +958,9 @@ wheels = [
 
 [[package]]
 name = "urllib3"
-version = "2.5.0"
+version = "2.6.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/15/22/9ee70a2574a4f4599c47dd506532914ce044817c7752a79b6a51286319bc/urllib3-2.5.0.tar.gz", hash = "sha256:3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760", size = 393185, upload-time = "2025-06-18T14:07:41.644Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1e/24/a2a2ed9addd907787d7aa0355ba36a6cadf1768b934c652ea78acbd59dcd/urllib3-2.6.2.tar.gz", hash = "sha256:016f9c98bb7e98085cb2b4b17b87d2c702975664e4f060c6532e64d1c1a5e797", size = 432930, upload-time = "2025-12-11T15:56:40.252Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a7/c2/fe1e52489ae3122415c51f387e221dd0773709bad6c6cdaa599e8a2c5185/urllib3-2.5.0-py3-none-any.whl", hash = "sha256:e6b01673c0fa6a13e374b50871808eb3bf7046c4b125b216f6bf1cc604cff0dc", size = 129795, upload-time = "2025-06-18T14:07:40.39Z" },
+    { url = "https://files.pythonhosted.org/packages/6d/b9/4095b668ea3678bf6a0af005527f39de12fb026516fb3df17495a733b7f8/urllib3-2.6.2-py3-none-any.whl", hash = "sha256:ec21cddfe7724fc7cb4ba4bea7aa8e2ef36f607a4bab81aa6ce42a13dc3f03dd", size = 131182, upload-time = "2025-12-11T15:56:38.584Z" },
 ]
