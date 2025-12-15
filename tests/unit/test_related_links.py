@@ -146,6 +146,50 @@ class TestContextFunctions:
 
         mock_get.assert_called_once_with("https://example.com", timeout=10)
 
+    @patch("sphinx_related_links.callback.cache", {})
+    @patch("sphinx_related_links.callback.requests.get")
+    def test_discourse_links_with_dict_prefix_default_server(self, mock_get):
+        """Test that dict prefix handles default server without exception."""
+        mock_response = Mock()
+        mock_response.raise_for_status.return_value = None
+        mock_response.text = '{"title": "Test Topic"}'
+        mock_get.return_value = mock_response
+
+        self.context["discourse_prefix"] = {
+            "server1": "https://server1.example.com/t/",
+            "server2": "https://server2.example.com/t/",
+        }
+
+        sphinx_related_links.add_context_links(
+            self.app_mock, self.pagename, self.templatename, self.context, self.doctree
+        )
+
+        # Should not raise TypeError when accessing dict.values()[0]
+        result = self.context["discourse_links"]("11111")
+        assert result  # Just verify something was returned
+
+    @patch("sphinx_related_links.callback.cache", {})
+    @patch("sphinx_related_links.callback.requests.get")
+    def test_discourse_links_with_dict_prefix_specific_server(self, mock_get):
+        """Test that dict prefix handles specific server without exception."""
+        mock_response = Mock()
+        mock_response.raise_for_status.return_value = None
+        mock_response.text = '{"title": "Test Topic"}'
+        mock_get.return_value = mock_response
+
+        self.context["discourse_prefix"] = {
+            "server1": "https://server1.example.com/t/",
+            "server2": "https://server2.example.com/t/",
+        }
+
+        sphinx_related_links.add_context_links(
+            self.app_mock, self.pagename, self.templatename, self.context, self.doctree
+        )
+
+        # Should handle server-specific format
+        result = self.context["discourse_links"]("server2:22222")
+        assert result  # Just verify something was returned
+
 
 # Import the module after defining the tests
 import sphinx_related_links

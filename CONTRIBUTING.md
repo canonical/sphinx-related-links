@@ -53,7 +53,7 @@ Inside the project directory, set up the virtual development environment and ins
 dependencies, linters, and testers:
 
 ```bash
-make setup
+make install
 make lint
 make test
 ```
@@ -86,7 +86,7 @@ changes on.
 ```bash
 git checkout main
 git pull
-make setup
+make install
 ```
 
 Next, create a new branch against your chosen base. The new branch name should be brief,
@@ -183,7 +183,7 @@ code. In such cases, it's best to delete your virtual environment and start over
 ```bash
 rm -rf .venv
 make clean
-make setup
+make install
 ```
 
 ### Push the branch and open a PR
