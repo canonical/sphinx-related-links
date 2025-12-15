@@ -13,6 +13,13 @@ Configure the Discourse prefix in your `conf.py`:
 html_context = {
     "discourse_prefix": "https://discuss.linuxcontainers.org/t/"
 }
+
+html_context = {
+    "discourse_prefix": {
+        "ubuntu": "https://discourse.ubuntu.com/t/",
+        "lxc": "https://discuss.linuxcontainers.org/t/"
+    }
+}
 ```
 
 Add the desired Discourse topic IDs to the page's metadata. For MyST files, this is done
