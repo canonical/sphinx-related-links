@@ -50,7 +50,7 @@ Add URLs to page metadata:
 ```
 
 When listing links across multiple lines, make sure that each link begins
-in the same column.
+with the same indentation.
 
 ## Project setup
 
