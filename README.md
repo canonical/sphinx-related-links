@@ -43,9 +43,14 @@ Add URLs to page metadata:
 
 ```
 ---
-relatedlinks: https://www.example.com, https://www.google.com
+:relatedlinks: https://www.example.com,
+               https://www.google.com,
+               https://ubuntu.com
 ---
 ```
+
+When listing links across multiple lines, make sure that each link begins
+in the same column.
 
 ## Project setup
 
