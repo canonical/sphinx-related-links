@@ -5,7 +5,7 @@ and practices for participating in the project.
 
 ## Review the project expectations
 
-Before you start working on the project, there are three documents for you to digest.
+Before you start working on the project, there are four documents for you to digest.
 
 ### Ubuntu Code of Conduct
 
@@ -23,6 +23,10 @@ incorporated into the repository.
 ### Open source license
 
 This project is licensed under [GPL-3.0](LICENSE).
+
+### Versioning policy
+
+This project is versioned according to [Semantic Versioning 2.0](https://semver.org).
 
 ## Report an issue or open a request
 
@@ -73,6 +77,10 @@ If you'd like to add a small feature or fix, check the project's GitHub issues t
 others have reported it. If they have, look into the current status of the topic. If no
 one else is working on it, add a comment stating that you'd like to take it on, and a
 maintainer will assign it to you.
+
+If you'd like to implement a change that will break compatibility with existing Sphinx
+projects, be sure to mention this in the issue description. Breaking changes must be
+cleared with a maintainer and may not fit into a release for several months.
 
 If you're ever in doubt about developments in the project, ask!
 
@@ -210,3 +218,8 @@ interface, as it leads to fewer potential conflicts with syncs.
 
 Don't force-push changes to the branch. It destroys the history of the review and makes
 it harder for maintainers to see code changes.
+
+Once approved, the maintainer will fit your changes into an upcoming release. Patch
+versions and minor versions are usually released at a regular cadence, but major
+versions aren't tagged as frequently. If your change is breaking, it may be some time
+before it's fit into a release.
