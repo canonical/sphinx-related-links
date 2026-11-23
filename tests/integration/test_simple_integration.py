@@ -142,6 +142,8 @@ def test_sphinx_build(example_project):
         import re
 
         actual_text = re.sub(r"\s+", " ", related_link.get_text().strip())
-        assert actual_text == "Enterprise Open Source and Linux | Ubuntu"
+        # The text is the live <title> of ubuntu.com, which changes over time,
+        # so check that a title was fetched rather than pinning its wording.
+        assert actual_text.endswith("| Ubuntu")
     else:
         pytest.fail("Related link not found in HTML output.")

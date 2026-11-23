@@ -8,7 +8,16 @@ include common.mk
 format: format-ruff format-codespell format-prettier  ## Run all automatic formatters
 
 .PHONY: lint
-lint: lint-ruff lint-codespell lint-mypy lint-prettier lint-pyright lint-shellcheck lint-twine  ## Run all linters
+lint: lint-code  ## Run all linters
+
+.PHONY: lint-code
+lint-code: lint-ruff lint-codespell lint-mypy lint-prettier lint-pyright lint-shellcheck lint-twine  ## Run code linters
+
+.PHONY: setup-docs
+setup-docs: install-npm  ##- Set up the documentation linting environment
+
+.PHONY: docs-lint
+docs-lint: lint-prettier  ##- Lint the documentation
 
 .PHONY: pack
 pack: pack-pip  ## Build all packages
