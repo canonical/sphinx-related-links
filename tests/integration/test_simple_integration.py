@@ -21,10 +21,10 @@
 # ruff: noqa: PLC0415
 
 import shutil
-import subprocess
 import sys
 from collections.abc import Callable
 from pathlib import Path
+from unittest.mock import Mock
 
 import bs4
 
@@ -111,12 +111,38 @@ def example_project(request) -> Path:
     return target_dir
 
 
+# Canned responses for the pages that the example project links to, so that the
+# build doesn't depend on discourse.ubuntu.com or ubuntu.com being reachable.
+FAKE_RESPONSES = {
+    "https://discourse.ubuntu.com/t/57290.json": '{"title": "General posting guidelines"}',
+    "https://ubuntu.com/": "<html><head><title>Ubuntu test page</title></head></html>",
+}
+
+
+def fake_get(url: str, timeout: float) -> Mock:
+    response = Mock()
+    response.raise_for_status.return_value = None
+    response.text = FAKE_RESPONSES[url]
+    return response
+
+
 @pytest.mark.slow
-def test_sphinx_build(example_project):
-    build_dir = example_project / "_build"
-    subprocess.check_call(
-        ["sphinx-build", "-b", "html", "-W", example_project, build_dir],
+def test_sphinx_build(example_project, mocker):
+    from sphinx.cmd.build import build_main
+    from sphinx_related_links import callback
+
+    # Run Sphinx in this process so that the HTTP requests can be patched.
+    mocker.patch.dict(callback.cache, clear=True)
+    mock_get = mocker.patch(
+        "sphinx_related_links.callback.requests.get", side_effect=fake_get
     )
+
+    build_dir = example_project / "_build"
+    exit_code = build_main(["-b", "html", "-W", str(example_project), str(build_dir)])
+    assert exit_code == 0
+
+    requested = {call.args[0] for call in mock_get.call_args_list}
+    assert requested == set(FAKE_RESPONSES)
 
     index = build_dir / "index.html"
 
@@ -142,8 +168,6 @@ def test_sphinx_build(example_project):
         import re
 
         actual_text = re.sub(r"\s+", " ", related_link.get_text().strip())
-        # The text is the live <title> of ubuntu.com, which changes over time,
-        # so check that a title was fetched rather than pinning its wording.
-        assert actual_text.endswith("| Ubuntu")
+        assert actual_text == "Ubuntu test page"
     else:
         pytest.fail("Related link not found in HTML output.")
